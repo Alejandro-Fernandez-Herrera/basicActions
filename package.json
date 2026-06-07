@@ -2,10 +2,13 @@
   "name": "node-tests-students",
   "private": true,
   "scripts": {
-    "test": "jest --runInBand"
+    "test": "jest --runInBand",
+    "test:ci": "jest --runInBand --coverage",
+    "lint": "eslint students/ --ext .js",
+    "lint:fix": "eslint students/ --ext .js --fix"
   },
   "devDependencies": {
-    "jest": "^29"
+    "jest": "^29",
+    "eslint": "^8"
   }
 }
-
