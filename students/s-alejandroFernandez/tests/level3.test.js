@@ -33,3 +33,46 @@ describe('calculator', () => {
     expect(calculator(0.1, 0.2, '+')).toBeCloseTo(0.3);
   });
 });
+
+
+const { validatePassword } = require('../src/level3');
+
+// --- validatePassword ---
+describe('validatePassword', () => {
+  it('returns strong true for a valid password', () => {
+    expect(validatePassword('Secure@123')).toEqual({ strong: true, errors: [] });
+  });
+  it('fails if password is too short', () => {
+    const result = validatePassword('Ab@1');
+    expect(result.strong).toBe(false);
+    expect(result.errors).toContain('Must be at least 8 characters');
+  });
+  it('fails if no uppercase letter', () => {
+    const result = validatePassword('secure@123');
+    expect(result.strong).toBe(false);
+    expect(result.errors).toContain('Must contain at least one uppercase letter');
+  });
+  it('fails if no lowercase letter', () => {
+    const result = validatePassword('SECURE@123');
+    expect(result.strong).toBe(false);
+    expect(result.errors).toContain('Must contain at least one lowercase letter');
+  });
+  it('fails if no number', () => {
+    const result = validatePassword('Secure@abc');
+    expect(result.strong).toBe(false);
+    expect(result.errors).toContain('Must contain at least one number');
+  });
+  it('fails if no special character', () => {
+    const result = validatePassword('Secure1234');
+    expect(result.strong).toBe(false);
+    expect(result.errors).toContain('Must contain at least one special character');
+  });
+  it('returns multiple errors for weak password', () => {
+    const result = validatePassword('abc');
+    expect(result.strong).toBe(false);
+    expect(result.errors.length).toBeGreaterThan(1);
+  });
+  it('throws if input is not a string', () => {
+    expect(() => validatePassword(123)).toThrow('Input must be a string');
+  });
+});
