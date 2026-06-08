@@ -9,7 +9,12 @@ module.exports = [
         module: "readonly",
         describe: "readonly",
         test: "readonly",
-        expect: "readonly"
+        it: "readonly",
+        expect: "readonly",
+        beforeEach: "readonly",
+        afterEach: "readonly",
+        beforeAll: "readonly",
+        afterAll: "readonly"
       }
     }
   }

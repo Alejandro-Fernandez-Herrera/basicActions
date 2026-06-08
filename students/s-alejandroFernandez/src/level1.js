@@ -18,6 +18,10 @@ function countVowels(text) {
   return vowels ? vowels.length : 0;
 }
 
-// Export so Jest can use them
-module.exports = { isPalindrome, sumArray, countVowels };
+// --- Function 4 ---
+function findLargest(nums) {
+  if (!Array.isArray(nums) || nums.length === 0) throw new Error('Input must be a non-empty array');
+  return Math.max(...nums);
+}
 
+module.exports = { isPalindrome, sumArray, countVowels, findLargest };

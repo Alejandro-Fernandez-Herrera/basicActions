@@ -4,7 +4,8 @@
   "scripts": {
     "test": "jest --runInBand",
     "test:ci": "jest --runInBand --coverage",
-    "lint": "eslint students/ --ext .js"
+    "lint": "eslint students/ --ext .js",
+    "lint:fix": "eslint students/ --ext .js --fix"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
